@@ -1,8 +1,10 @@
 # Super Cute Dogs
 
-[See site here](https://super-cute-dog.herokuapp.com/)  
-
 This is a Test-Project for using Vue / Webpack / HTML / CSS etc.
+
+To see the site live visit [https://super-cute-dog.herokuapp.com/](https://super-cute-dog.herokuapp.com)
+
+Images come from [here](https://dog.ceo/dog-api/).
 
 ## Run
 
