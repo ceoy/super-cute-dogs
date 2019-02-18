@@ -2,11 +2,7 @@
 # Edit at https://www.gitignore.io/?templates=vue,vuejs,visualstudiocode
 
 ### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
@@ -17,5 +13,4 @@ node_modules
 .DS_Store
 
 dist/
-
 # End of https://www.gitignore.io/api/vue,vuejs,visualstudiocode
