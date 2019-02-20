@@ -101,7 +101,6 @@
 
             let checkBoxes = document.querySelectorAll(".mdc-checkbox__native-control")
             for (var i = 0; i < checkBoxes.length; i++) {
-                console.log(i)
                 checkBoxes[i].onchange = changeEventHandler
             }
             let dialogButtons = document.querySelectorAll('.mdc-dialog__button')

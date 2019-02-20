@@ -8,8 +8,7 @@
                     </span>
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Download" alt="Download">file_download</a>
-                    <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Print this page" alt="Print this page">print</a>
+                    <a href="https://github.com/ceoy/super-cute-dogs" target="blank" class="material-icons mdc-top-app-bar__action-item fab fa-github" aria-label="Download" alt="Download"><i class="fab fa-github"></i></a>
                 </section>
             </div>
         
@@ -97,6 +96,7 @@
     @import "material-components-web/material-components-web";
     @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
     @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+    @import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
 
 
     p {

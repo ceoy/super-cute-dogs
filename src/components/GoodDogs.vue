@@ -13,7 +13,7 @@
         return r.keys().map(r)
     }
     const images = importAll(require.context('../assets/dogs', false, /\.(png|jpg|svg)$/))
-
+    
     export default {
         name: "GoodDogsView",
         data: function() {
