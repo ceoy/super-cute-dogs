@@ -79,7 +79,7 @@
         </header>
         <div class="container">
             <div class="content content--active tab-top-bar-adjust">
-                <home-view />
+                <home-view v-bind:title="say"/>
             </div>
             <div class="content tab-top-bar-adjust">
                 <good-dogs-view />
@@ -105,6 +105,11 @@ Vue.component('good-dogs-view', GoodDogs)
 Vue.component('about-view', About)
 
 export default {
+    data () {
+        return {
+            say: "hallo"
+        }
+    },
     mounted: function() { // document is loaded
         // find all content tabs
         var contentElements = document.querySelectorAll('.content')
