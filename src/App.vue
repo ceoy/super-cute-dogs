@@ -7,42 +7,70 @@
                         Dogs are Love
                     </span>
                 </section>
-                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <a href="https://github.com/ceoy/super-cute-dogs" target="blank" class="material-icons mdc-top-app-bar__action-item fab fa-github" aria-label="Download" alt="Download"><i class="fab fa-github"></i></a>
+                <section 
+                    class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end"
+                    role="toolbar">
+                    <a 
+                        href="https://github.com/ceoy/super-cute-dogs" 
+                        target="blank" 
+                        class="material-icons mdc-top-app-bar__action-item fab fa-github" 
+                        aria-label="Download" 
+                        alt="Download">
+                        <i class="fab fa-github" />
+                    </a>
                 </section>
             </div>
         
-
-            <div class="mdc-tab-bar" role="tablist">
+            <div 
+                class="mdc-tab-bar" 
+                role="tablist">
                 <div class="mdc-tab-scroller">
                     <div class="mdc-tab-scroller__scroll-area">
                         <div class="mdc-tab-scroller__scroll-content">
-                            <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                            <button 
+                                class="mdc-tab mdc-tab--active" 
+                                role="tab" 
+                                aria-selected="true"
+                                tabindex="0">
                                 <span class="mdc-tab__content">                            
-                                    <span class="mdc-tab__text-label">Best Dogs</span>
+                                    <span class="mdc-tab__text-label">
+                                        Best Dogs
+                                    </span>
                                 </span>
                                 <span class="mdc-tab-indicator mdc-tab-indicator--active">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" />
                                 </span>
-                                <span class="mdc-tab__ripple"></span>
+                                <span class="mdc-tab__ripple" />
                             </button>
-                            <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                            <button 
+                                class="mdc-tab mdc-tab" 
+                                role="tab" 
+                                aria-selected="true" 
+                                tabindex="0">
                                 <span class="mdc-tab__content">
-                                    <span class="mdc-tab__text-label">Good Dogs</span>
+                                    <span class="mdc-tab__text-label">
+                                        Good Dogs
+                                    </span>
                                 </span>
                                 <span class="mdc-tab-indicator">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" />
                                 </span>
-                                <span class="mdc-tab__ripple"></span>
+                                <span class="mdc-tab__ripple" />
                             </button>
-                            <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                            <button 
+                                class="mdc-tab mdc-tab" 
+                                role="tab" 
+                                aria-selected="true" 
+                                tabindex="0">
                                 <span class="mdc-tab__content">
-                                    <span class="mdc-tab__text-label">About</span>
+                                    <span class="mdc-tab__text-label">
+                                        About
+                                    </span>
                                 </span>
                                 <span class="mdc-tab-indicator">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" />
                                 </span>
-                                <span class="mdc-tab__ripple"></span>
+                                <span class="mdc-tab__ripple" />
                             </button>
                         </div>
                     </div>
@@ -64,32 +92,32 @@
 </template>
 
 <script>
-    import Home from './components/Home.vue'
-    import About from './components/About.vue'
-    import GoodDogs from './components/GoodDogs.vue'
-    import Vue from 'vue'
+import Home from './components/Home.vue'
+import About from './components/About.vue'
+import GoodDogs from './components/GoodDogs.vue'
+import Vue from 'vue'
 
-    import { MDCTabBar } from '@material/tab-bar';
+import { MDCTabBar } from '@material/tab-bar';
 
-    // register components
-    Vue.component('home-view', Home)
-    Vue.component('good-dogs-view', GoodDogs)
-    Vue.component('about-view', About)
+// register components
+Vue.component('home-view', Home)
+Vue.component('good-dogs-view', GoodDogs)
+Vue.component('about-view', About)
 
-    export default {
-        mounted: function() { // document is loaded
-            // find all content tabs
-            var contentElements = document.querySelectorAll('.content')
+export default {
+    mounted: function() { // document is loaded
+        // find all content tabs
+        var contentElements = document.querySelectorAll('.content')
 
-            // get the tab bar and listen to changes
-            new MDCTabBar(document.querySelector('.mdc-tab-bar')).listen("MDCTabBar:activated", function(event) {
-                // find the active tab and set it inactive
-                document.querySelector(".content--active").classList.remove('content--active')
-                // set the new tab as activesaf
-                contentElements[event.detail.index].classList.add('content--active')
-            })
-        }
+        // get the tab bar and listen to changes
+        new MDCTabBar(document.querySelector('.mdc-tab-bar')).listen("MDCTabBar:activated", function(event) {
+            // find the active tab and set it inactive
+            document.querySelector(".content--active").classList.remove('content--active')
+            // set the new tab as activesaf
+            contentElements[event.detail.index].classList.add('content--active')
+        })
     }
+}
 </script>
 
 <style lang="scss">

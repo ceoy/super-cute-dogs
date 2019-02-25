@@ -1,4 +1,4 @@
-var cacheName = 'weatherpwa-cache'
+var cacheName = 'supercutedogs-cache'
 var filesToCache = []
 
 self.addEventListener('install', function(e) {

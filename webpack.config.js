@@ -9,8 +9,7 @@ const { InjectManifest } = require('workbox-webpack-plugin')
 module.exports = {
     mode: 'development',
     entry: {
-        app: ['./src/index.js', './src/style.scss'],
-        sw: './src/service-worker.js'
+        app: ['./src/index.js', './src/style.scss']
     },
     devServer: {
         contentBase: './dist',
