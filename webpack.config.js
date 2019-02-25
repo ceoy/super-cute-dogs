@@ -4,12 +4,12 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('vue-html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack');
-
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 module.exports = {
     mode: 'development',
     entry: {
-        app: ['./src/index.js', './src/style.scss'],
+        app: ['./src/index.js', './src/style.scss']
     },
     devServer: {
         contentBase: './dist',
@@ -59,6 +59,13 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: "babel-loader",
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
             // this will apply to both plain `.scss` files
             // AND `<style lang="scss">` blocks in `.vue` files
             {
@@ -80,6 +87,12 @@ module.exports = {
                 ]
             },
             {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader',
             },
@@ -93,6 +106,9 @@ module.exports = {
             vue: true,
             favicon: './src/assets/favicon_dog.ico'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new InjectManifest({
+            swSrc: './src/service-worker.js'
+        })
     ]
 };
