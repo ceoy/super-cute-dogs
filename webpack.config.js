@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('vue-html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack');
 const { InjectManifest } = require('workbox-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 module.exports = {
     mode: 'development',
@@ -107,8 +108,22 @@ module.exports = {
             favicon: './src/assets/favicon_dog.ico'
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new WebpackPwaManifest({
+            name: "Super Cute Dogs",
+            short_name: "CuteDogs",
+            description: "Super Cute Dogs are super cute!",
+            background_color: "#ffffff",
+            crossorigin: "use-credentials",
+            icons: [{
+                src: path.resolve('src/assets/gooddog.png'),
+                sizes: [96, 128, 192, 256, 384, 512]
+            }],
+            inject: true,
+            ios: true
+        }),
         new InjectManifest({
-            swSrc: './src/service-worker.js'
+            swSrc: './src/sw.js',
+            swDest: 'sw.js'
         })
     ]
 };
