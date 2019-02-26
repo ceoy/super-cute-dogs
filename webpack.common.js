@@ -13,18 +13,6 @@ module.exports = {
         app: ['./src/index.js', './src/style.scss'],
         install: './src/install.js',
     },
-    devServer: {
-        contentBase: './dist',
-        hot: true,
-        stats: {
-            colors: true,
-            chunks: false
-        },
-        watchOptions: {
-            poll: true,
-            aggregateTimeout: 300,
-        }
-    },
     output: {
         filename: "[name].[hash].js",
         path: path.resolve(__dirname, "dist")
@@ -41,7 +29,6 @@ module.exports = {
             }
         }
     },
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -114,7 +101,6 @@ module.exports = {
             short_name: "CuteDogs",
             description: "Super Cute Dogs are super cute!",
             background_color: "#ffffff",
-            crossorigin: "use-credentials",
             icons: [{
                 src: path.resolve('src/assets/gooddog.png'),
                 sizes: [96, 128, 192, 256, 384, 512]

@@ -104,6 +104,8 @@ Vue.component('home-view', Home)
 Vue.component('good-dogs-view', GoodDogs)
 Vue.component('about-view', About)
 
+// Vue.prototype.window = window
+
 export default {
     data () {
         return {
@@ -114,6 +116,8 @@ export default {
         // find all content tabs
         var contentElements = document.querySelectorAll('.content')
 
+        window["nativeCallback"] = this.naticeSignatureCallback
+
         // get the tab bar and listen to changes
         new MDCTabBar(document.querySelector('.mdc-tab-bar')).listen("MDCTabBar:activated", function(event) {
             // find the active tab and set it inactive
@@ -121,7 +125,12 @@ export default {
             // set the new tab as activesaf
             contentElements[event.detail.index].classList.add('content--active')
         })
-    }
+    },
+    methods: {
+        naticeSignatureCallback() {
+            console.log("hi")
+        },
+    },
 }
 </script>
 
