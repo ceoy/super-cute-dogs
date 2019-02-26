@@ -36,6 +36,12 @@ According to this documentation [here](https://developers.google.com/web/fundame
 
 ### Service Worker
 
+In order to cache data, send push notification, or do some other background work, there needs to be a Service Worker.  
+A Sercice Worker is also required so that the browser sends a `beforeinstallprompt` event.
+
+* Register the Service Worker
+* Install the Service Worker (if there )
+
 
 #### Workbox
 
@@ -48,3 +54,4 @@ According to this documentation [here](https://developers.google.com/web/fundame
 * [Web App Manifest Google Developers](https://developers.google.com/web/fundamentals/web-app-manifest/)
 * [Webpack PWA Manifest](https://github.com/arthurbergmz/webpack-pwa-manifest)
 * [Workbox](https://developers.google.com/web/tools/workbox/)
+* [Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)
