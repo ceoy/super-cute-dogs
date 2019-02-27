@@ -87,6 +87,7 @@
 </template>
 
 <script>
+// const {MDCDialog} = import('@material/dialog')
 import {MDCDialog} from '@material/dialog'
 
 export default {

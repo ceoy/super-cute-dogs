@@ -40,12 +40,29 @@ In order to cache data, send push notification, or do some other background work
 A Sercice Worker is also required so that the browser sends a `beforeinstallprompt` event.
 
 * Register the Service Worker
-* Install the Service Worker (if there )
+* Install the Service Worker (if one is not installed yet or there were changes)
+    * Open a cache
+    * Cache something
+* Return Cached responses
+* 
 
+These steps can either be done manually or we can use Workbox. I decided to use Workbox.
 
-#### Workbox
+#### workbox-webpack-plugin plugin
 
+[Workbox](https://developers.google.com/web/tools/workbox/) is a set of JavaScript Libraries from Google that help with caching & offlien support.  
 
+In order to cache Javascript, you have to register a [route](https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.routing), telling it what to cache and with what [strategy](https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.strategies).
+
+Thanks to the workbox-webpack-plugin plugin, this can be done pretty easily.
+
+![service-worker](./doc/workbox.png)
+
+In order to have this __precacheManifest, you need to inject it into this service worker.
+
+![inject files](./doc/inject.png)
+
+Since webpack knows what files are being created, it also has a list of files that should precached. 
 
 ## Links
 

@@ -79,7 +79,7 @@
         </header>
         <div class="container">
             <div class="content content--active tab-top-bar-adjust">
-                <home-view v-bind:title="say"/>
+                <home-view />
             </div>
             <div class="content tab-top-bar-adjust">
                 <good-dogs-view />
@@ -107,16 +107,9 @@ Vue.component('about-view', About)
 // Vue.prototype.window = window
 
 export default {
-    data () {
-        return {
-            say: "hallo"
-        }
-    },
     mounted: function() { // document is loaded
         // find all content tabs
         var contentElements = document.querySelectorAll('.content')
-
-        window["nativeCallback"] = this.naticeSignatureCallback
 
         // get the tab bar and listen to changes
         new MDCTabBar(document.querySelector('.mdc-tab-bar')).listen("MDCTabBar:activated", function(event) {
@@ -125,12 +118,7 @@ export default {
             // set the new tab as activesaf
             contentElements[event.detail.index].classList.add('content--active')
         })
-    },
-    methods: {
-        naticeSignatureCallback() {
-            console.log("hi")
-        },
-    },
+    }
 }
 </script>
 
