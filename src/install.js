@@ -1,9 +1,11 @@
-let deferredPromt
+window.deferredPromt
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault() // chrome 67 would otherwise instantly show the promt
-    deferredPromt = e
     console.log("beforeinstallpromt")
+    e.preventDefault() // chrome 67 would otherwise instantly show the promt
+    window.deferredPromt = e
+    window.deferredPromt.promt()
+
 })
 
 window.addEventListener('appinstalled', (evt) => {

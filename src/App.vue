@@ -104,6 +104,8 @@ Vue.component('home-view', Home)
 Vue.component('good-dogs-view', GoodDogs)
 Vue.component('about-view', About)
 
+// Vue.prototype.window = window
+
 export default {
     mounted: function() { // document is loaded
         // find all content tabs

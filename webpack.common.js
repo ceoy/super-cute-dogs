@@ -6,28 +6,18 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack');
 const { InjectManifest } = require('workbox-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
     entry: {
         app: ['./src/index.js', './src/style.scss'],
         install: './src/install.js',
     },
-    devServer: {
-        contentBase: './dist',
-        hot: true,
-        stats: {
-            colors: true,
-            chunks: false
-        },
-        watchOptions: {
-            poll: true,
-            aggregateTimeout: 300,
-        }
-    },
     output: {
         filename: "[name].[hash].js",
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "dist"),
     },
     optimization: {
         runtimeChunk: 'single',
@@ -41,7 +31,6 @@ module.exports = {
             }
         }
     },
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -52,9 +41,13 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
+                use: [{
+                    loader:'file-loader',
+                    options: {
+                        limit: 10000,
+                        name: 'images/[hash].[ext]'
+                    }
+                }]
             },
             {
                 test: /\.js$/,
@@ -73,7 +66,8 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
+                    // 'vue-style-loader',
                     {
                         loader: 'css-loader',
                         options: {
@@ -106,6 +100,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Super Cute Dogs",
             vue: true,
+            template: './src/template.html',
+            meta: {
+                description: "Super Cute Dogs - Dogs that are super cute deserve to be shown!",
+                keywords: "Super, Cute, Dogs, Samoyed",
+                "theme-color": "#6200ee"
+            },
             favicon: './src/assets/favicon_dog.ico'
         }),
         new webpack.HotModuleReplacementPlugin(),
@@ -114,7 +114,7 @@ module.exports = {
             short_name: "CuteDogs",
             description: "Super Cute Dogs are super cute!",
             background_color: "#ffffff",
-            crossorigin: "use-credentials",
+            theme_color: "#6200ee",
             icons: [{
                 src: path.resolve('src/assets/gooddog.png'),
                 sizes: [96, 128, 192, 256, 384, 512]
@@ -123,8 +123,24 @@ module.exports = {
             ios: true
         }),
         new InjectManifest({
-            swSrc: './src/sw.js',
-            swDest: 'sw.js'
-        })
+            swSrc: './src/sw.js'
+        }),
+        new CompressionPlugin({
+            filename: '[path].gz[query]',
+            test: /\.js$|\.css|\.html/,
+            algorithm: 'gzip',
+            threshold: 10240,
+            minRatio: 0.8
+        }),
+        new BrotliPlugin({
+            asset: '[path].br[query]',
+            test: /\.js$|\.css|\.html/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[name].[hash].css"
+        }),
     ]
 };

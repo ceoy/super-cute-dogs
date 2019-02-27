@@ -20,7 +20,7 @@
                             <path 
                                 class="mdc-checkbox__checkmark-path"
                                 fill="none"
-                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" /> 
                         </svg>
                         <div class="mdc-checkbox__mixedmark" />
                     </div>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+// const {MDCDialog} = import('@material/dialog')
 import {MDCDialog} from '@material/dialog'
 
 export default {

@@ -4,15 +4,17 @@
             <li 
                 v-for="image of images"
                 class="mdc-image-list__item">
-                <img 
+                <VLazyImage 
                     class="mdc-image-list__image" 
-                    :src="image">
+                    :src="image" />
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+import VLazyImage from 'v-lazy-image'
+
 function importAll(r) {
     return r.keys().map(r)
 }
@@ -20,6 +22,9 @@ const images = importAll(require.context('../assets/dogs', false, /\.(png|jpg|sv
 
 export default {
     name: "GoodDogsView",
+    components: {
+        VLazyImage
+    },
     data: function() {
         return {
             images

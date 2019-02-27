@@ -1,3 +1,6 @@
+// Require the polyfill before requiring any other modules.
+require('intersection-observer');
+
 import Vue from 'vue';
 import App from './App.vue';
 
